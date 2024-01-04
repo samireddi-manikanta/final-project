@@ -21,10 +21,10 @@ threshold = 0.8
 
 # Load the fertilizer recommendation model
 loaded_fertilizer_model = joblib.load('fertilizer_recommender.pkl')
-fertilizer_dataset = pd.read_csv('fertilizerdataset.csv')
-le = LabelEncoder()
-y = fertilizer_dataset['Fertilizer']
-y_encoded = le.fit_transform(y)
+#fertilizer_dataset = pd.read_csv('fertilizerdataset.csv')
+#le = LabelEncoder()
+#y = fertilizer_dataset['Fertilizer']
+#y_encoded = le.fit_transform(y)
 
 # Define the recommend_insecticide function
 def recommend_insecticide(pest):
@@ -90,7 +90,7 @@ if uploaded_file is not None:
         if st.button("Predict Fertilizer"):
             new_input = [Nitrogen_value, Phosphorus_value, Potassium_value, pH_value, Rainfall_value, Temperature_value]
             recommended_fertilizer_encoded = loaded_fertilizer_model.predict([new_input])[0]
-            recommended_fertilizer = le.inverse_transform([recommended_fertilizer_encoded])[0]
-            st.write("Recommended fertilizer:", recommended_fertilizer)
+            #recommended_fertilizer = le.inverse_transform([recommended_fertilizer_encoded])[0]
+            st.write("Recommended fertilizer:", recommended_fertilizer_encoded)
     else:
         st.write("No pests detected.")
